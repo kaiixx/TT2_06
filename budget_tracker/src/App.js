@@ -1,25 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import Projects from './components/Projects';
 
 function App() {
+  const[projects, setTasks] =  useState(
+    [
+        {
+            "id": 1,
+            "user_id": 4,
+            "name": "RTF",
+            "budget": 12000,
+            "description": "Realtime Face Recogniton"
+        },
+        {
+            "id": 2,
+            "user_id": 1,
+            "name": "SWT",
+            "budget": 80000,
+            "description": "Smart Watch Tracker"
+        },
+        {
+            "id": 3,
+            "user_id": 2,
+            "name": "ULS",
+            "budget": 11000,
+            "description": "Upgrade Legacy System"
+        }
+      ]
+)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1> Projects </h1>
+          <Projects projects = {projects}
+          />
     </div>
-  );
+  )
 }
 
 export default App;
