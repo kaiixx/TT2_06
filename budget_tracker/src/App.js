@@ -1,8 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
-import LoginPage from './pages/login-page'
+import LoginPage from './pages/login-page';
+import {
+  Routes,
+  Route
+} from "react-router-dom";
+import DashboardPage from './pages/dashboard';
+import { useState } from 'react';
 
 function App() {
+  
+  const [userInfor, setUserInfor] = useState(null);
+  
   return (
     <div className="App">
      <Routes>
