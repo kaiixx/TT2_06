@@ -11,7 +11,7 @@ export default function Login() {
     return username.length > 0 && password.length > 0;
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
   }
 
@@ -42,4 +42,3 @@ export default function Login() {
     </div>
   );
 }
-

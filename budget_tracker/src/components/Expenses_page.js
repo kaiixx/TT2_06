@@ -1,30 +1,9 @@
-import './App.css';
-import LoginPage from './pages/login-page';
-import {
-  Routes,
-  Route
-} from "react-router-dom";
-import DashboardPage from './pages/dashboard';
 import { useState } from 'react';
-import Expenses from './components/Expenses';
-import Dashboard from './components/Dashboard';
+import Expenses from './Expenses';
+import Expense from './expense';
 import Button from "react-bootstrap/Button";
 
-
-function App() {
-  
-//   const [userInfor, setUserInfor] = useState(null);
-  
-//   return (
-//     <div className="App">
-//      <Routes>
-//         <Route path="/" exact element={<LoginPage userInfor={userInfor} setUserInfor={setUserInfor}/>}/>
-//         <Route path="/dashboard" element={<Dashboard/>}/>
-//       </Routes>
-//     </div>
-//   );
-// }
-
+const ExpensesPage = () => {
     const[expenses, setExpenses] =  useState(
         [
             {
@@ -55,16 +34,13 @@ function App() {
     )
     
       return (
-        <div>
+        <div>  
           <h1> Expenses </h1>
-          <Button style = {{backgroundColor: 'green', border: "1px solid green", marginLeft:"2%"}}  block size="lg" type="submit">
-          Add Button
-        </Button>     
-        <p/>         
-        <Expenses expenses = {expenses}
+            <Button className = 'btn'></Button>
+              <Expenses expenses = {expenses}
               />
         </div>
       )
 }
 
-export default App;
+export default Dashboard;
