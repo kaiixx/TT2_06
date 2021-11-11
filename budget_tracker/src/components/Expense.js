@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 const Expense = ({expense}) => {
+
     return(
         <div className = 'expense_wrap'>
         <div
