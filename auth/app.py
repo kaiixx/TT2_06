@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 import sqlite3
 
 from security import authenticate, identity
-from resources.user import UserRegister
+from resources.user import UserRegister, UserLogin, UserLogout
 from models.user import User
 
 app = Flask(__name__)
@@ -60,7 +60,9 @@ db.session.commit()
 
 jwt = JWT(app, authenticate, identity)  # /auth
 
-api.add_resource(UserRegister, '/register')
+# api.add_resource(UserRegister, '/register')
+api.add_resource(UserLogin, '/login')
+api.add_resource(UserLogout, '/logout')
 
 if __name__ == '__main__':
     from db import db

@@ -25,3 +25,47 @@ class UserRegister(Resource):
         user.save_to_db()
 
         return {"message": "User created successfully."}, 201
+
+
+class UserLogin(Resource):
+    parser = reqparse.RequestParser()
+    parser.add_argument('username',
+                        type=str,
+                        required=True,
+                        help="This field cannot be blank."
+                        )
+    parser.add_argument('password',
+                        type=str,
+                        required=True,
+                        help="This field cannot be blank."
+                        )
+
+    def post(self):
+        data = UserLogin.parser.parse_args()
+
+        # if username exists and password given matches the one link to the username provided
+        if User.find_by_username(data['username']) and data['password'] == User.find_by_username(data['username']).password:
+            return {"message": "Login success"}, 200
+        return {"message": "Login failed"}, 400
+
+
+class UserLogout(Resource):
+    parser = reqparse.RequestParser()
+    parser.add_argument('username',
+                        type=str,
+                        required=True,
+                        help="This field cannot be blank."
+                        )
+    parser.add_argument('password',
+                        type=str,
+                        required=True,
+                        help="This field cannot be blank."
+                        )
+
+    def post(self):
+        data = UserLogin.parser.parse_args()
+
+        # if username exists and password given matches the one link to the username provided
+        if User.find_by_username(data['username']) and data['password'] == User.find_by_username(data['username']).password:
+            return {"message": "Logout success"}, 200
+        return {"message": "Logout failed"}, 400
