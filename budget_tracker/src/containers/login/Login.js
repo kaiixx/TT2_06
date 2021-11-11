@@ -25,7 +25,7 @@ export default function Login({setUserInfor}) {
       console.log("ok");
       setUserInfor(testData);
     } else {
-      alert("wrong account!");
+      alert("Wrong account info!");
     }
   }
 
