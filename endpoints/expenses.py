@@ -60,18 +60,20 @@ def delete_expense():
 def edit_expense():
     data = json.loads(request.data)
     cur_expense = Expense.query.filter_by(id=data['id']).first()
-    if data['project_id']:
-        cur_expense.project_id = data['project_id']
-    if data['category_id']:
-        cur_expense.category_id = data['category_id']
-    if data['name']:
-        cur_expense.name = data['name']
-    if data['description']:
-        cur_expense.description = data['description']
-    if data['amount']:
-        cur_expense.amount = data['amount']
-    cur_expense.updated_at = func.now()
-    cur_expense.updated_by = data['user_id']
-    db.session.commit()
+    if cur_expense:
+        if data['project_id']:
+            cur_expense.project_id = data['project_id']
+        if data['category_id']:
+            cur_expense.category_id = data['category_id']
+        if data['name']:
+            cur_expense.name = data['name']
+        if data['description']:
+            cur_expense.description = data['description']
+        if data['amount']:
+            cur_expense.amount = data['amount']
+        cur_expense.updated_at = func.now()
+        cur_expense.updated_by = data['user_id']
+        db.session.commit()
 
-    return jsonify({'204': 'Edited successfully'})
+        return jsonify({'204': 'Edited successfully'})
+    return jsonify({'404':'Expense not found'})
