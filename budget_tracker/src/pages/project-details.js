@@ -38,9 +38,9 @@ function ProjectDetailsPage({userInfor}) {
     }
 
     const handleUpdate = (value) => {
-        let name = prompt("enter the new name");
-        let description = prompt("enter the new description");
-        let amount = prompt("enter the new amount");
+        let name = prompt("Enter the new expense name");
+        let description = prompt("Enter the new description");
+        let amount = prompt("Enter the new amount");
 
         console.log(userInfor);
 
@@ -52,8 +52,8 @@ function ProjectDetailsPage({userInfor}) {
         if(description.length !== 0) exp.description = description;
         if(amount > 0) exp.amount = amount;
         exp.updated_at = (new Date()).toISOString();
-        exp.updated_by = userInfor.name;
-        
+        exp.updated_by = "Jacky";
+    
         console.log(exp);
         const tmp = expenses.map((expense) => {
             if(expense.id === value) return exp;
