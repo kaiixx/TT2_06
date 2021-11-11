@@ -1,6 +1,6 @@
 from flask import Blueprint, request, flash, jsonify
 from flask_jwt import JWT, jwt_required, current_identity
-from .models import User, Project, Category, Expense 
+from .models import Project
 from . import db
 import json 
 from sqlalchemy.sql import func
@@ -18,11 +18,9 @@ def projects_serializer(projects):
         'expenses':projects.expenses
         }
 
-app = Flask(__name__)
-
 @app.route("/view_projects/<int:user_id>)
 def all_projects(user_id):
-    projects= Expense.query.filter_by(user_id=user_id).all()
+    projects= Project.query.filter_by(user_id=user_id).all()
     if projects:
         return jsonify([*map(projects_serializer, projects)])
     else:
