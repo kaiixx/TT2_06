@@ -1,5 +1,4 @@
 from flask import Blueprint, request, flash, jsonify
-from flask_jwt import JWT, jwt_required, current_identity
 from .models import User, Project, Category, Expense 
 from . import db
 import json 
@@ -16,7 +15,7 @@ def projects_serializer(projects):
         'budget':projects.budget,
         }
 
-@jwt_required()
+
 @project.route("/view_projects/<int:user_id>")
 def all_projects(user_id):
     projects= Project.query.filter_by(user_id=user_id).all()

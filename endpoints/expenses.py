@@ -1,5 +1,4 @@
 from flask import Blueprint, request, flash, jsonify
-from flask_jwt import JWT, jwt_required, current_identity
 from .models import User, Project, Category, Expense 
 from . import db
 import json 
@@ -11,14 +10,16 @@ expenses = Blueprint('expenses', __name__)
 
 def expense_serializer(expenses):
     return{
+        'expense_id':expenses.id,
         'category_id':expenses.category_id,
         'name':expenses.name,
         'description':expenses.description,
         'amount':expenses.amount
     }
 
+
 #view all expenses for one proj id
-@jwt_required()
+
 @expenses.route("/all_expenses/<int:project_id>")
 def all_expenses(project_id):
     expenses= Expense.query.filter_by(project_id=project_id).all()
@@ -29,14 +30,10 @@ def all_expenses(project_id):
 
 
 #add expense for proj id
-@jwt_required()
+
 @expenses.route("/add_expense", methods=['POST'])
 def add_expense():
-    # data = request.json
     data = json.loads(request.data)
-    print(data)
-    # include error handling here
-    # new_expense = Expense(project_id=data['project_id'],category_id=data['category_id'],name=data['name'],description=data['description'],amount=data['amount'],created_by=current_identity,updated_by=current_identity)
     new_expense = Expense(project_id=data['project_id'],category_id=data['category_id'],name=data['name'],description=data['description'],amount=data['amount'],created_by=data['user_id'],updated_by=data['user_id'])
     db.session.add(new_expense)
     db.session.commit()
@@ -44,7 +41,7 @@ def add_expense():
 
 
 # delete expense for proj id
-@jwt_required()
+
 @expenses.route('/delete_expense',methods=['DELETE'])
 def delete_expense():
     data = json.loads(request.data)
@@ -58,11 +55,10 @@ def delete_expense():
 
 
 # edit expense for proj id
-@jwt_required()
+
 @expenses.route("/edit_expense",methods=['PUT'])
 def edit_expense():
     data = json.loads(request.data)
-    print(data)
     cur_expense = Expense.query.filter_by(id=data['id']).first()
     if data['project_id']:
         cur_expense.project_id = data['project_id']
@@ -75,7 +71,6 @@ def edit_expense():
     if data['amount']:
         cur_expense.amount = data['amount']
     cur_expense.updated_at = func.now()
-    # cur_expense.updated_by = current_identity
     cur_expense.updated_by = data['user_id']
     db.session.commit()
 
