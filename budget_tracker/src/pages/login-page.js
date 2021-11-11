@@ -1,6 +1,6 @@
 import Login from "../containers/login/Login";
 
-function LoginPage() {
+function LoginPage({userInfor, setUserInfor}) {
     return (
         <div className="login-page">
              <Login/>
