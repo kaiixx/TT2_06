@@ -62,11 +62,29 @@ function ProjectDetailsPage({userInfor}) {
         setExpenses([...tmp]);
     }
 
-    console.log(userInfor);
+    const handleAdd = (value) => {
+        let exp = {};
+        let name = prompt("Enter the new expense name");
+        let description = prompt("Enter the new description");
+        let amount = prompt("Enter the new amount");
+        if(name.length !== 0) exp.name = name;
+        if(description.length !== 0) exp.description = description;
+        if(amount > 0) exp.amount = amount;
+        exp.updated_at = (new Date()).toISOString();
+        exp.updated_by = "Jacky";
+        exp.created_at = (new Date()).toISOString();
+        exp.created_by = "Jacky";
+        exp.id = expenses.length + 1;
+        exp.project_id = 1;
+        exp.category_id = 1;
+    
+        console.log(exp);
+        setExpenses([...expenses, exp]);
+    }
 
   return (
     <div className="project-details">
-        <button>Add expense</button>
+        <button onClick={handleAdd}>Add expense</button>
         {
             !(expenses) ?
             null :
