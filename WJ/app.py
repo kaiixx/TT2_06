@@ -1,4 +1,22 @@
-from flask import Flask
+from flask import Blueprint, request, flash, jsonify
+from flask_jwt import JWT, jwt_required, current_identity
+from .models import User, Project, Category, Expense 
+from . import db
+import json 
+from sqlalchemy.sql import func
+
+# - View all projects under certain user 
+
+projects = Blueprint('projects', __name__)
+
+def projects_serializer(projects):
+    return{
+        'id':projects.id,
+        'name':projects.name,
+        'description':projects.description,
+        'budget':projects.budget,
+        'expenses':projects.expenses
+        }
 
 app = Flask(__name__)
 
