@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Projects from './components/Projects';
 
 const Dashboard = () => {
-    const[projects, setTasks] =  useState(
+    const[projects, setProjects] =  useState(
         [
             {
                 "id": 1,

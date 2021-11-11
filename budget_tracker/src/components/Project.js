@@ -6,9 +6,9 @@ const Project = ({project}) => {
             className = 'project'
         >
         <h3>
-            {project.name}{' '}
+            {project.name} ({project.description}){' '}
         </h3>    
-        <p>{project.description}</p>
+        <p>Budget: {project.budget}</p>
         </div>
     )
 }
