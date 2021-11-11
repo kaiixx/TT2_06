@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "Production"
+    },
+    {
+        "id": 2,
+        "name": "Operation"
+    },
+    {
+        "id": 3,
+        "name": "Financial"
+    },
+    {
+        "id": 4,
+        "name": "Vendor"
+    },
+    {
+        "id": 5,
+        "name": "Manpower"
+    },
+    {
+        "id": 6,
+        "name": "Software"
+    },
+    {
+        "id": 7,
+        "name": "Hardware"
+    }
+]
