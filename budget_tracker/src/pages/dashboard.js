@@ -1,6 +1,9 @@
 import React from "react";
 
-function DashboardPage() {
+function DashboardPage({userInfor}) {
+
+  console.log(userInfor);
+
   return (
     <div className="dashboard">
         <h1>DASHBOARD</h1>

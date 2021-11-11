@@ -3,7 +3,15 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
 
-export default function Login() {
+const testData = {
+  id: 1,
+  username: "user101",
+  password: "123456",
+  name: "Jacky",
+  appointment: "Project Lead"
+};
+
+export default function Login({setUserInfor}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,6 +21,12 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    if(username === testData.username && password === testData.password) {
+      console.log("ok");
+      setUserInfor(testData);
+    } else {
+      alert("wrong account!");
+    }
   }
 
   return (

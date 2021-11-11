@@ -1,6 +1,6 @@
 import Project from "./Project"
 import { useState } from 'react';
-import Projects from './components/Projects';
+import Projects from './Projects';
 
 const Dashboard = () => {
     const[projects, setProjects] =  useState(
@@ -37,3 +37,5 @@ const Dashboard = () => {
         </div>
       )
 }
+
+export default Dashboard;
