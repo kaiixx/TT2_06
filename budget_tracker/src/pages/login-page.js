@@ -3,7 +3,7 @@ import Login from "../containers/login/Login";
 function LoginPage({userInfor, setUserInfor}) {
     return (
         <div className="login-page">
-             <Login/>
+             <Login setUserInfor={setUserInfor}/>
         </div>
     );
 };
