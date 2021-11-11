@@ -38,9 +38,9 @@ function ProjectDetailsPage({userInfor}) {
     }
 
     const handleUpdate = (value) => {
-        let name = prompt("enter the new name");
-        let description = prompt("enter the new description");
-        let amount = prompt("enter the new amount");
+        let name = prompt("Enter the new expense name");
+        let description = prompt("Enter the new description");
+        let amount = prompt("Enter the new amount");
 
         console.log(userInfor);
 
@@ -52,8 +52,8 @@ function ProjectDetailsPage({userInfor}) {
         if(description.length !== 0) exp.description = description;
         if(amount > 0) exp.amount = amount;
         exp.updated_at = (new Date()).toISOString();
-        exp.updated_by = userInfor.name;
-        
+        exp.updated_by = "Jacky";
+    
         console.log(exp);
         const tmp = expenses.map((expense) => {
             if(expense.id === value) return exp;
@@ -66,20 +66,28 @@ function ProjectDetailsPage({userInfor}) {
 
   return (
     <div className="project-details">
-        <button>Add expense</button>
+        <h1 style={{textAlign: 'left', marginLeft: '5px'}}>  Expenses </h1>
+
+        <button style={{marginRight: '1800px', marginBottom: '25px'}}>Add expense</button>
+        <div className = 'cardExpense'>
         {
             !(expenses) ?
             null :
             expenses.map(expense => 
                 <div id={expense.id}>
-                    <h1>{expense.name}</h1>
+                    <h1>{expense.id}. {expense.name}</h1>
                     <h3>{expense.description}</h3>
                     <p>{expense.amount}</p>
                     <button onClick={(event) => handleUpdate(expense.id)}>Update expense</button>
+                    <p/>
                     <button onClick={(event) => handleDelete(expense.id)}>Delete expense</button>
+                    <p/>
+                    <h3> --------------------------------------------------------------------</h3>
                 </div>    
             )
         }
+
+        </div> 
     </div>
   );
 }

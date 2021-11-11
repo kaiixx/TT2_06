@@ -5,11 +5,9 @@ import {
   Route,
   Navigate
 } from "react-router-dom";
-import DashboardPage from './pages/dashboard';
-import Dashboard from './components/dashboard';
+import Dashboard from './components/Dashboard';
 import ProjectDetailsPage from './pages/project-details';
 import { useState } from 'react';
-import Dashboard from './components/Dashboard';
 
 
 function App() {

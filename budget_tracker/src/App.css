@@ -50,14 +50,17 @@
   justify-content: space-between;
 }
 
-.expense {
+.cardExpense {
   background: #f4f4f4;
   margin: 5px;
+  padding-bottom: 20px;
   padding: 10px 20px;
   cursor: pointer;
+  align-items: left;
+  text-align: left;
 }
 
-.expense h3 {
+.cardExpense h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
